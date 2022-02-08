@@ -63,6 +63,11 @@ class _MainScreenState extends State<MainScreen> {
       body: BlocBuilder<WeatherCubit, WeatherState>(
         bloc: data,
         builder: (context, state) {
+          if (state is WeatherLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
           if (state is WeatherLoaded) {
             return _buildWeatherPage(state.weather);
           }
@@ -81,8 +86,8 @@ class _MainScreenState extends State<MainScreen> {
             const SizedBox(
               height: 80,
             ),
-            _weatherLocation(
-                'http://openweathermap.org/img/wn/02d@2x.png', '${model.temp?.round()}', '${model.cityName}'),
+            _weatherLocation('http://openweathermap.org/img/wn/01d@2x.png',
+                '${model.temp?.round()}', '${model.cityName}'),
             const SizedBox(
               height: 80,
             ),
@@ -99,7 +104,12 @@ class _MainScreenState extends State<MainScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircleAvatar(radius: 55,child: Image.network(icon,),),
+          CircleAvatar(
+            radius: 55,
+            child: Image.network(
+              icon,
+            ),
+          ),
           const SizedBox(
             height: 10,
           ),

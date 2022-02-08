@@ -4,14 +4,13 @@ import 'package:weather_app/client/weather_client.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit() : super(WeatherInit());
-  WeatherClient client = WeatherClient();
 
   Future<void> getWeather(double lat, double long) async {
     emit(WeatherLoading());
     WeatherClient client = WeatherClient();
     try {
       final result = await client.getCurrentWeather(lat, long);
-      emit(WeatherLoaded(result));
+      emit(WeatherLoaded(result!));
     }
     catch (e) {}
     //TODO include all States

@@ -2,7 +2,7 @@ name: weather_app
 description: A new Flutter project.
 
 
-publish_to:
+publish_to:none
 version: 1.0.0+1
 
 environment:
@@ -16,9 +16,9 @@ dependencies:
   flutter_bloc: ^8.0.1
   bloc: ^8.0.2
   equatable: ^2.0.3
-  http: ^0.13.4
   geolocator: ^8.1.1
   latlong2: ^0.8.1
+  dio: ^4.0.4
 
 
   cupertino_icons: ^1.0.2
